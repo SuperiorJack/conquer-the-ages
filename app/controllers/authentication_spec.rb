@@ -1,6 +1,3 @@
-
-require 'spec_helper'
-
 RSpec.describe 'POST /login', type: :request do
   let(:user) { Fabricate(:user) }
   let(:url) { '/login' }

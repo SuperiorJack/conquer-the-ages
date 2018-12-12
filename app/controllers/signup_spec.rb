@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe 'POST /signup', type: :request do
   let(:url) { '/signup' }
   let(:params) do
