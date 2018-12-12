@@ -11,7 +11,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -37,5 +37,7 @@ module ConquerTheAges
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+    config.assets.compile = true
+    config.assets.precompile += %w[active_admin.css active_admin.js]
   end
 end
