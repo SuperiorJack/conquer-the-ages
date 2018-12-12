@@ -31,13 +31,12 @@ module ConquerTheAges
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.app_generators.scaffold_controller = :scaffold_controller
 
     # Middleware for ActiveAdmin
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
-    config.assets.compile = true
-    config.assets.precompile += %w[active_admin.css active_admin.js]
   end
 end
