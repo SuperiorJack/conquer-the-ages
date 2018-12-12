@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery unless: -> {request.format.json?}
   def render_resource(resource)
+    puts "okay!!"
     if resource.errors.empty?
       render json: resource
     else
@@ -20,4 +21,5 @@ class ApplicationController < ActionController::Base
       ]
     }, status: :bad_request
   end
+
 end
