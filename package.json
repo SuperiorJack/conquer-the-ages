@@ -1,10 +1,6 @@
 {
-  "name": "list-of-ingredients",
+  "name": "Conquer-The-Ages",
   "license": "MIT",
-  "engines": {
-    "node": "8.9.4",
-    "yarn": "1.6.0"
-  },
   "scripts": {
     "build": "yarn --cwd client install && yarn --cwd client build",
     "deploy": "cp -a client/build/. public/",
