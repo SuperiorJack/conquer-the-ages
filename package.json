@@ -1,6 +1,10 @@
 {
-  "name": "Conquer-The-Ages",
+  "name": "Conquer-The",
   "license": "MIT",
+  "engines": {
+    "node": "11.4.0",
+    "yarn": "1.12.3"
+  },
   "scripts": {
     "build": "yarn --cwd client install && yarn --cwd client build",
     "deploy": "cp -a client/build/. public/",
