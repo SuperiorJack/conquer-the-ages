@@ -85,7 +85,7 @@ class App extends Component {
           </form>
           {messages}
           <p>
-            Edit <code>src/App.js</code> It work on windows save to reload.
+            Edit <code>src/App.js</code> It work on windowsu save to reload.
           </p>
           <a
             className="App-link"
