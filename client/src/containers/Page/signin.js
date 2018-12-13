@@ -6,8 +6,6 @@ import Checkbox from '../../components/uielements/checkbox';
 import Button from '../../components/uielements/button';
 import authAction from '../../redux/auth/actions';
 import Auth0 from '../../helpers/auth0';
-import Firebase from '../../helpers/firebase';
-import FirebaseLogin from '../../components/firebase';
 import IntlMessages from '../../components/utility/intlMessages';
 import SignInStyleWrapper from './signin.style';
 
@@ -87,7 +85,6 @@ class SignIn extends Component {
                     <IntlMessages id="page.signInAuth0" />
                   </Button>}
 
-                {Firebase.isValid && <FirebaseLogin login={this.handleLogin} />}
               </div>
               <div className="isoCenterComponent isoHelperWrapper">
                 <Link to="/forgotpassword" className="isoForgotPass">

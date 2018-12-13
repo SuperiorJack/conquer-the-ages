@@ -6,8 +6,6 @@ import Checkbox from '../../components/uielements/checkbox';
 import Button from '../../components/uielements/button';
 import authAction from '../../redux/auth/actions';
 import Auth0 from '../../helpers/auth0/index';
-import Firebase from '../../helpers/firebase';
-import FirebaseLogin from '../../components/firebase';
 import IntlMessages from '../../components/utility/intlMessages';
 import SignUpStyleWrapper from './signup.style';
 
@@ -94,9 +92,6 @@ class SignUp extends React.Component {
                   >
                     <IntlMessages id="page.signUpAuth0" />
                   </Button>}
-
-                {Firebase.isValid &&
-                  <FirebaseLogin signup={true} login={this.handleLogin} />}
               </div>
               <div className="isoInputWrapper isoCenterComponent isoHelperWrapper">
                 <Link to="/signin">
