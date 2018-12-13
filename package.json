@@ -6,7 +6,7 @@
     "yarn": "1.12.3"
   },
   "scripts": {
-    "build": "yarn --cwd client install && ./client/node_modules/.bin/tailwind build ./client/src/styles/fuse-helpers.tailwind.css -c ./client/tailwind.js -o ./client/src/styles/fuse-helpers.css && ./client/node_modules/.bin/postcss --use autoprefixer -o ./client/src/styles/fuse-helpers.css ./client/src/styles/fuse-helpers.css && ./client/node_modules/.bin/cross-env NODE_PATH=src react-scripts build",
+    "build": "yarn --cwd client install && ./client/node_modules/.bin/tailwind build ./client/src/styles/fuse-helpers.tailwind.css -c ./client/tailwind.js -o ./client/src/styles/fuse-helpers.css && ./client/node_modules/.bin/postcss --use autoprefixer -o ./client/src/styles/fuse-helpers.css ./client/src/styles/fuse-helpers.css && ./client/node_modules/.bin/cross-env NODE_PATH=./client/src react-scripts build",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy"
   }
