@@ -3,48 +3,47 @@ import FuseSettingsConfig from 'fuse-configs/fuseSettingsConfig';
 import qs from 'qs';
 
 const defaultSettings = {
-    layout          : {
-        style : 'layout1',
+    layout: {
+        style: 'layout1',
         config: {
-            scroll : 'content',
-            navbar : {
-                display : true,
-                folded  : false,
+            scroll: 'content',
+            navbar: {
+                display: true,
+                folded: false,
                 position: 'left'
             },
             toolbar: {
-                display : true,
-                style   : 'fixed',
+                display: true,
+                style: 'fixed',
                 position: 'below'
             },
-            footer : {
-                display : true,
-                style   : 'fixed',
+            footer: {
+                display: true,
+                style: 'fixed',
                 position: 'below'
             },
-            leftSidePanel : {
-                display : true,
+            leftSidePanel: {
+                display: true,
             },
-            rightSidePanel : {
-                display : true,
+            rightSidePanel: {
+                display: true,
             },
-            mode   : 'fullwidth'
+            mode: 'fullwidth'
         }
     },
     customScrollbars: true,
-    theme           : {
-        main   : 'default',
-        navbar : 'mainThemeDark',
+    theme: {
+        main: 'default',
+        navbar: 'mainThemeDark',
         toolbar: 'mainThemeLight',
-        footer : 'mainThemeDark'
+        footer: 'mainThemeDark'
     }
 };
 
-const parsedQueryString = qs.parse(window.location.search, {ignoreQueryPrefix: true});
+const parsedQueryString = qs.parse(window.location.search, { ignoreQueryPrefix: true });
 let FuseSettingsQuery = {};
 
-if ( parsedQueryString && parsedQueryString.defaultSettings )
-{
+if (parsedQueryString && parsedQueryString.defaultSettings) {
     FuseSettingsQuery = JSON.parse(parsedQueryString.defaultSettings);
 }
 
