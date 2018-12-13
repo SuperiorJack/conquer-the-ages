@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'admin', to: 'active_admin/devise/sessions#new'
+  get '/admin', to: 'admin/dashboard#index'
   devise_for :users,
              path: '',
              path_names: {
