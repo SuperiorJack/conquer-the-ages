@@ -1,104 +1,72 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
+
+import Layout from './hoc/Layout/Layout';
+import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import Logout from './containers/Auth/Logout/Logout';
+import * as actions from './store/actions/index';
+
+const asyncCheckout = asyncComponent(() => {
+  return import('./containers/Checkout/Checkout');
+});
+
+const asyncOrders = asyncComponent(() => {
+  return import('./containers/Orders/Orders');
+});
+
+const asyncAuth = asyncComponent(() => {
+  return import('./containers/Auth/Auth');
+});
 
 class App extends Component {
-
-  state = { messages: null }
-
-  fetchMessages = () => {
-    window.fetch('/api/messages')
-      .then(response => response.json())
-      .then(json => { return (this.setState({ messages: json })) })
-      .catch(error => console.log(error));
+  componentDidMount () {
+    this.props.onTryAutoSignup();
   }
 
-  signin = () => {
-    window.fetch('/login', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify({ user: { email: 'mounir2@mounir.com', password: 'test1234' } })
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(error => console.log(error));
-  }
+  render () {
+    let routes = (
+      <Switch>
+        <Route path="/auth" component={asyncAuth} />
+        <Route path="/" exact component={BurgerBuilder} />
+        <Redirect to="/" />
+      </Switch>
+    );
 
-  signup = () => {
-    window.fetch('/signup', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify({ user: { email: 'mounir2@mounir.com', password: 'test1234' } })
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(error => console.log(error));
-  }
-
-  logout = () => {
-    window.fetch('/logout', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "DELETE"
-    })
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-  }
-
-  addMessage = event => {
-    event.preventDefault();
-    console.log(this.refs.addMessageInput.value)
-    window.fetch('/api/messages', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify({ body: this.refs.addMessageInput.value, user_id: 1 })
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(error => console.log(error));
-  }
-
-  render() {
-    let messages = null;
-    if (this.state.messages != null) {
-      messages = this.state.messages.map(message => { return (<div key={message.id}>{message.body}</div>) })
+    if ( this.props.isAuthenticated ) {
+      routes = (
+        <Switch>
+          <Route path="/checkout" component={asyncCheckout} />
+          <Route path="/orders" component={asyncOrders} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/auth" component={asyncAuth} />
+          <Route path="/" exact component={BurgerBuilder} />
+          <Redirect to="/" />
+        </Switch>
+      );
     }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <button onClick={this.fetchMessages}>Messages</button>
-          <button onClick={this.signup}>SignUp</button>
-          <button onClick={this.signin}>SignIn</button>
-          <button onClick={this.logout}>Logout</button>
-          <form onSubmit={this.addMessage}>
-            <input ref="addMessageInput" /><button>ADD</button>
-          </form>
-          {messages}
-          <p>
-            Edit <code>src/App.js</code> It work on windowsu save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Layout>
+          {routes}
+        </Layout>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch( actions.authCheckState() )
+  };
+};
+
+export default withRouter( connect( mapStateToProps, mapDispatchToProps )( App ) );
