@@ -101,9 +101,9 @@ const SignUpStyleWrapper = styled.div`
 
           &:first-child {
             margin-right: ${props =>
-              props['data-rtl'] === 'rtl' ? 'inherit' : '20px'};
+    props['data-rtl'] === 'rtl' ? 'inherit' : '20px'};
             margin-left: ${props =>
-              props['data-rtl'] === 'rtl' ? '20px' : 'inherit'};
+    props['data-rtl'] === 'rtl' ? '20px' : 'inherit'};
           }
         }
       }
@@ -152,15 +152,6 @@ const SignUpStyleWrapper = styled.div`
 
           &:hover {
             background-color: ${palette('color', 12)};
-          }
-        }
-
-        &.btnFirebase {
-          background-color: ${palette('color', 5)};
-          margin-top: 15px;
-
-          &:hover {
-            background-color: ${palette('color', 6)};
           }
         }
       }

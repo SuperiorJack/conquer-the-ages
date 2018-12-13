@@ -101,9 +101,9 @@ const SignInStyleWrapper = styled.div`
         line-height: 1.2;
         color: ${palette('grayscale', 1)};
         padding-left: ${props =>
-          props['data-rtl'] === 'rtl' ? 'inherit' : '13px'};
+    props['data-rtl'] === 'rtl' ? 'inherit' : '13px'};
         padding-right: ${props =>
-          props['data-rtl'] === 'rtl' ? '13px' : 'inherit'};
+    props['data-rtl'] === 'rtl' ? '13px' : 'inherit'};
         margin: 15px 0;
         position: relative;
         display: flex;
@@ -170,15 +170,6 @@ const SignInStyleWrapper = styled.div`
 
             &:hover {
               background-color: darken(#e14615, 5%);
-            }
-          }
-
-          &.btnFirebase {
-            background-color: ${palette('color', 5)};
-            margin-top: 15px;
-
-            &:hover {
-              background-color: ${palette('color', 6)};
             }
           }
         }
