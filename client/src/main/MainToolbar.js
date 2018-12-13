@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles/index';
 import classNames from 'classnames';
-import { Avatar, Button, Icon, IconButton, ListItemIcon, ListItemText, Popover, MenuItem, Typography, Hidden } from '@material-ui/core';
+import { Avatar, Button, Icon, IconButton, ListItemIcon, ListItemText, Popover, MenuItem, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as authActions from 'auth/store/actions';
 import * as chatPanelActions from 'main/chatPanel/store/actions';
@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MailIcon from '@material-ui/icons/Mail';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = theme => ({
     root: {
@@ -40,7 +39,7 @@ class MainToolbar extends Component {
         this.setState({ userMenu: null });
     };
     render() {
-        const { classes, toggleQuickPanel, user, logout, openChatPanel } = this.props;
+        const { classes, user, logout } = this.props;
         const { userMenu } = this.state;
 
         return (
