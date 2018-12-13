@@ -6,7 +6,7 @@
     "yarn": "1.12.3"
   },
   "scripts": {
-    "build": "yarn --cwd client install && yarn --cwd client cross-env NODE_PATH=src react-scripts build",
+    "build": "yarn --cwd client install && yarn --cwd client/node_modules/.bin cross-env NODE_PATH=src react-scripts build",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy"
   }
