@@ -7,7 +7,7 @@ export const ExampleConfig = {
             config: {}
         }
     },
-    auth: authRoles.guess,
+    auth: authRoles.user,
     routes: [
         {
             path: '/',
