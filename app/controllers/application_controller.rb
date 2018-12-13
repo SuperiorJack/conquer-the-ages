@@ -22,4 +22,7 @@ class ApplicationController < ActionController::Base
     }, status: :bad_request
   end
 
+  def fallback_index_html
+    render :file => 'public/index.html'
+  end
 end
