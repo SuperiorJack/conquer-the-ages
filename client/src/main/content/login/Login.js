@@ -1,23 +1,21 @@
-import React, {Component} from 'react'
-import {Link, withRouter} from 'react-router-dom';
-import {withStyles} from '@material-ui/core/styles/index';
-import {Card, CardContent, Typography, Tabs, Tab} from '@material-ui/core';
+import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles/index';
+import { Card, CardContent, Typography, Tabs, Tab } from '@material-ui/core';
 import classNames from 'classnames';
-import {FuseAnimate} from '@fuse';
+import { FuseAnimate } from '@fuse';
 import JWTLoginTab from './tabs/JWTLoginTab';
-import FirebaseLoginTab from './tabs/FirebaseLoginTab';
-import Auth0LoginTab from './tabs/Auth0LoginTab';
 
 const styles = theme => ({
-    root : {
-        background    : "url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat",
+    root: {
+        background: "url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat",
         backgroundSize: 'cover'
     },
     intro: {
         color: '#ffffff'
     },
-    card : {
-        width   : '100%',
+    card: {
+        width: '100%',
         maxWidth: 400
     }
 });
@@ -28,13 +26,12 @@ class Login extends Component {
     };
 
     handleTabChange = (event, value) => {
-        this.setState({tabValue: value});
+        this.setState({ tabValue: value });
     };
 
-    render()
-    {
-        const {classes} = this.props;
-        const {tabValue} = this.state;
+    render() {
+        const { classes } = this.props;
+        const { tabValue } = this.state;
 
         return (
             <div className={classNames(classes.root, "flex flex-col flex-1 flex-no-shrink p-24 md:flex-row md:p-0")}>
@@ -43,7 +40,7 @@ class Login extends Component {
                     className={classNames(classes.intro, "flex flex-col flex-no-grow items-center p-16 text-center md:p-128 md:items-start md:flex-no-shrink md:flex-1 md:text-left")}>
 
                     <FuseAnimate animation="transition.expandIn">
-                        <img className="w-128 mb-32" src="assets/images/logos/fuse.svg" alt="logo"/>
+                        <img className="w-128 mb-32" src="assets/images/logos/fuse.svg" alt="logo" />
                     </FuseAnimate>
 
                     <FuseAnimate animation="transition.slideUpIn" delay={300}>
@@ -60,7 +57,7 @@ class Login extends Component {
                     </FuseAnimate>
                 </div>
 
-                <FuseAnimate animation={{translateX: [0, '100%']}}>
+                <FuseAnimate animation={{ translateX: [0, '100%'] }}>
 
                     <Card className={classNames(classes.card, "mx-auto m-16 md:m-0")}>
 
@@ -68,32 +65,7 @@ class Login extends Component {
 
                             <Typography variant="h6" className="text-center md:w-full mb-48">LOGIN TO YOUR ACCOUNT</Typography>
 
-                            <Tabs
-                                value={tabValue}
-                                onChange={this.handleTabChange}
-                                fullWidth={true}
-                                className="mb-32"
-                            >
-                                <Tab
-                                    icon={<img className="h-40 p-4 bg-black rounded-12" src="assets/images/logos/jwt.svg" alt="firebase"/>}
-                                    className="min-w-0"
-                                    label="JWT"
-                                />
-                                <Tab
-                                    icon={<img className="h-40" src="assets/images/logos/firebase.svg" alt="firebase"/>}
-                                    className="min-w-0"
-                                    label="Firebase"
-                                />
-                                <Tab
-                                    icon={<img className="h-40" src="assets/images/logos/auth0.svg" alt="auth0"/>}
-                                    className="min-w-0"
-                                    label="Auth0"
-                                />
-                            </Tabs>
-
-                            {tabValue === 0 && <JWTLoginTab/>}
-                            {tabValue === 1 && <FirebaseLoginTab/>}
-                            {tabValue === 2 && <Auth0LoginTab/>}
+                            <JWTLoginTab />
 
                             <div className="flex flex-col items-center justify-center pt-32">
                                 <span className="font-medium">Don't have an account?</span>
@@ -109,4 +81,4 @@ class Login extends Component {
     }
 }
 
-export default withStyles(styles, {withTheme: true})(withRouter(Login));
+export default withStyles(styles, { withTheme: true })(withRouter(Login));
