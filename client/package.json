@@ -56,6 +56,7 @@
     "postcss-cli": "6.0.1",
     "typeface-muli": "0.0.54",
     "velocity-react": "1.4.1",
+    "cross-env": "5.2.0",
     "jsonwebtoken": "8.4.0"
   },
   "scripts": {
@@ -72,7 +73,6 @@
     "@babel/core": "7.0.0-rc.1",
     "@babel/preset-env": "7.0.0-rc.1",
     "autoprefixer": "9.3.1",
-    "cross-env": "5.2.0",
     "js-beautify": "1.8.8",
     "marked": "0.5.2",
     "webpack-bundle-analyzer": "3.0.3"
