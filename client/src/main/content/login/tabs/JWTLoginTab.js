@@ -29,7 +29,9 @@ class JWTLoginTab extends Component {
     };
 
     onSubmit = (model) => {
+
         this.props.submitLogin(model);
+
     };
 
     componentDidUpdate(prevProps, prevState) {

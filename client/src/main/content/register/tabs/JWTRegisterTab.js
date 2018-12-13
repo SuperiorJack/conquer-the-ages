@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Formsy from 'formsy-react';
-import {TextFieldFormsy} from '@fuse';
-import {withStyles, Button, InputAdornment, Icon} from '@material-ui/core';
-import {bindActionCreators} from 'redux';
+import { TextFieldFormsy } from '@fuse';
+import { withStyles, Button, InputAdornment, Icon } from '@material-ui/core';
+import { bindActionCreators } from 'redux';
 import * as Actions from 'auth/store/actions';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
 
 const styles = theme => ({
@@ -21,21 +21,19 @@ class JWTRegisterTab extends Component {
     form = React.createRef();
 
     disableButton = () => {
-        this.setState({canSubmit: false});
+        this.setState({ canSubmit: false });
     };
 
     enableButton = () => {
-        this.setState({canSubmit: true});
+        this.setState({ canSubmit: true });
     };
 
     onSubmit = (model) => {
         this.props.submitRegister(model);
     };
 
-    componentDidUpdate(prevProps, prevState)
-    {
-        if ( this.props.register.error && (this.props.register.error.username || this.props.register.error.password || this.props.register.error.email) )
-        {
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.register.error && (this.props.register.error.username || this.props.register.error.password || this.props.register.error.email)) {
             this.form.updateInputsWithError({
                 ...this.props.register.error
             });
@@ -44,8 +42,7 @@ class JWTRegisterTab extends Component {
             this.disableButton();
         }
 
-        if ( this.props.user.role !== 'guest' )
-        {
+        if (this.props.user.role !== 'guest') {
             const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
             this.props.history.push({
                 pathname
@@ -54,10 +51,9 @@ class JWTRegisterTab extends Component {
         return null;
     }
 
-    render()
-    {
-        const {classes} = this.props;
-        const {canSubmit} = this.state;
+    render() {
+        const { classes } = this.props;
+        const { canSubmit } = this.state;
 
         return (
             <div className={classes.root}>
@@ -153,19 +149,17 @@ class JWTRegisterTab extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch)
-{
+function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         submitRegister: Actions.submitRegister
     }, dispatch);
 }
 
-function mapStateToProps({auth})
-{
+function mapStateToProps({ auth }) {
     return {
         register: auth.register,
-        user    : auth.user
+        user: auth.user
     }
 }
 
-export default withStyles(styles, {withTheme: true})(withRouter(connect(mapStateToProps, mapDispatchToProps)(JWTRegisterTab)));
+export default withStyles(styles, { withTheme: true })(withRouter(connect(mapStateToProps, mapDispatchToProps)(JWTRegisterTab)));
