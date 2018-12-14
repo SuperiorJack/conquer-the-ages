@@ -1,4 +1,5 @@
 import Example from './Example';
+import { authRoles } from 'auth';
 
 export const ExampleConfig = {
     settings: {
@@ -6,9 +7,10 @@ export const ExampleConfig = {
             config: {}
         }
     },
-    routes  : [
+    auth: authRoles.user,
+    routes: [
         {
-            path     : '/example',
+            path: '/',
             component: Example
         }
     ]

@@ -5,23 +5,22 @@ import ReactDOM from 'react-dom';
 import history from './history';
 import './react-table-defaults';
 import './styles/index.css';
+import './fake-db/fake-db';
 import JssProvider from 'react-jss/lib/JssProvider';
-import {create} from 'jss';
-import {createGenerateClassName, jssPreset} from '@material-ui/core/styles';
-import registerServiceWorker from './registerServiceWorker';
-import {Provider} from 'react-redux';
-import {Router} from 'react-router-dom';
-import {routes} from './fuse-configs/fuseRoutesConfig';
-import {FuseLayout, FuseTheme, FuseAuthorization} from '@fuse';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+import { routes } from './fuse-configs/fuseRoutesConfig';
+import { FuseLayout, FuseTheme, FuseAuthorization } from '@fuse';
 import MainToolbar from './main/MainToolbar';
 import MainNavbarContent from './main/MainNavbarContent';
 import MainNavbarHeader from './main/MainNavbarHeader';
 import MainFooter from './main/MainFooter';
 import jssExtend from 'jss-extend'
-import QuickPanel from 'main/quickPanel/QuickPanel';
 import store from 'store';
-import SettingsPanel from 'main/SettingsPanel';
-import {Auth} from 'auth';
+import ChatPanel from 'main/chatPanel/ChatPanel';
+import { Auth } from 'auth';
 
 const jss = create({
     ...jssPreset(),
@@ -41,24 +40,21 @@ ReactDOM.render(
                             <FuseLayout
                                 routes={routes}
                                 toolbar={
-                                    <MainToolbar/>
+                                    <MainToolbar />
                                 }
                                 navbarHeader={
-                                    <MainNavbarHeader/>
+                                    <MainNavbarHeader />
                                 }
                                 navbarContent={
-                                    <MainNavbarContent/>
+                                    <MainNavbarContent />
                                 }
                                 footer={
-                                    <MainFooter/>
+                                    <MainFooter />
                                 }
                                 rightSidePanel={
                                     <React.Fragment>
-                                        <QuickPanel/>
+                                        <ChatPanel />
                                     </React.Fragment>
-                                }
-                                contentWrapper={
-                                    <SettingsPanel/>
                                 }
                             >
                             </FuseLayout>
@@ -69,5 +65,3 @@ ReactDOM.render(
         </Provider>
     </JssProvider>
     , document.getElementById('root'));
-
-registerServiceWorker();

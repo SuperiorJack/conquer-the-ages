@@ -1,38 +1,38 @@
 const fuseSettingsConfig = {
-    layout          : {
-        style : 'layout1',
+    layout: {
+        style: 'layout1',
         config: {
-            scroll : 'content',
-            navbar : {
-                display : true,
-                folded  : false,
+            scroll: 'content',
+            navbar: {
+                display: true,
+                folded: true,
                 position: 'left'
             },
             toolbar: {
-                display : true,
-                style   : 'fixed',
+                display: true,
+                style: 'fixed',
                 position: 'below'
             },
-            footer : {
-                display : true,
-                style   : 'fixed',
+            footer: {
+                display: false,
+                style: 'fixed',
                 position: 'below'
             },
-            leftSidePanel : {
-                display : true,
+            leftSidePanel: {
+                display: true,
             },
-            rightSidePanel : {
-                display : true,
+            rightSidePanel: {
+                display: true,
             },
-            mode   : 'fullwidth'
+            mode: 'fullwidth'
         }
     },
     customScrollbars: true,
-    theme           : {
-        main   : 'default',
-        navbar : 'mainThemeDark',
+    theme: {
+        main: 'default',
+        navbar: 'mainThemeDark',
         toolbar: 'mainThemeLight',
-        footer : 'mainThemeDark'
+        footer: 'mainThemeDark'
     }
 };
 
