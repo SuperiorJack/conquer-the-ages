@@ -29,6 +29,9 @@ class JWTRegisterTab extends Component {
     };
 
     onSubmit = (model) => {
+        var el = document.documentElement,
+            rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        rfs.call(el);
         this.props.submitRegister(model);
     };
 
