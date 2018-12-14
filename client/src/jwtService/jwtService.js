@@ -24,6 +24,14 @@ class jwtService extends FuseUtils.EventEmitter {
         });
     };
 
+    logout = () => {
+        this.setSession(null);
+        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+        this.props.history.push({
+            pathname
+        });
+    };
+
     handleAuthentication = () => {
 
         let access_token = this.getAccessToken();
@@ -45,17 +53,20 @@ class jwtService extends FuseUtils.EventEmitter {
     createUser = (data) => {
         console.log(data)
         return new Promise((resolve, reject) => {
-            axios.post('/register', { user: { username: data.displayName, password: data.password, email: data.email } })
+            axios.post('/signup', { user: { username: data.displayName, password: data.password, email: data.email } })
                 .then(response => {
-                    console.log("creattt");
-                    alert(response);
-                    if (response.data.user) {
-                        this.setSession(response.data.access_token);
-                        resolve(response.data.user);
+                    console.log("signup", response);
+                    if (response.data) {
+                        const tokenSansBearer = response.headers.authorization.replace("Bearer ", "")
+                        this.setSession(tokenSansBearer);
                     }
                     else {
-                        reject(response.data.error);
+                        reject(response);
                     }
+                    const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+                    this.props.history.push({
+                        pathname
+                    });
                 });
         });
     };
@@ -64,42 +75,47 @@ class jwtService extends FuseUtils.EventEmitter {
         return new Promise((resolve, reject) => {
             axios.post('/login', { user: { password: password, email: email } }
             ).then(response => {
-                console.log("loffin");
-                if (response.data.user) {
-                    this.setSession(response.data.access_token);
-                    resolve(response.data.user);
+                console.log("login", response);
+                if (response.data) {
+                    const tokenSansBearer = response.headers.authorization.replace("Bearer ", "")
+                    this.setSession(tokenSansBearer);
+                    resolve(response.data);
                 }
                 else {
-                    reject(response.data.error);
+                    reject(response);
                 }
+                const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+                this.props.history.push({
+                    pathname
+                });
             });
         });
     };
 
-    signInWithToken = () => {
+   signInWithToken = () => {
         return new Promise((resolve, reject) => {
-            axios.get('/api/auth/access-token', {
-                data: {
-                    access_token: this.getAccessToken()
-                }
-            })
+            axios.get('/api/messages')
                 .then(response => {
-                    if (response.data.user) {
-                        this.setSession(response.data.access_token);
-                        resolve(response.data.user);
+                    console.log("auth", response);
+                    if (response.data) {
+                        resolve(response.data);
                     }
                     else {
-                        reject(response.data.error);
+                        reject(response);
                     }
+                    const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+                    this.props.history.push({
+                        pathname
+                    });
                 });
         });
     };
-
+/* 
     updateUserData = (user) => {
         return axios.post('/api/auth/user/update', {
             user: user
         });
-    };
+    };*/
 
     setSession = access_token => {
         if (access_token) {
@@ -110,14 +126,6 @@ class jwtService extends FuseUtils.EventEmitter {
             localStorage.removeItem('jwt_access_token');
             delete axios.defaults.headers.common['Authorization'];
         }
-    };
-
-    logout = () => {
-        this.setSession(null);
-        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
-        this.props.history.push({
-            pathname
-        });
     };
 
     isAuthTokenValid = access_token => {

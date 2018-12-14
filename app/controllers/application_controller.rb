@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery unless: -> {request.format.json?}
+  include DeviseWhitelist
+  protect_from_forgery with: :null_session
   def render_resource(resource)
-    puts "okay!!"
     if resource.errors.empty?
       render json: resource
     else
