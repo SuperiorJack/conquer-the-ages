@@ -48,6 +48,7 @@ class jwtService extends FuseUtils.EventEmitter {
             axios.post('/register', { user: { username: data.displayName, password: data.password, email: data.email } })
                 .then(response => {
                     console.log("creattt");
+                    alert(response);
                     if (response.data.user) {
                         this.setSession(response.data.access_token);
                         resolve(response.data.user);
@@ -113,6 +114,10 @@ class jwtService extends FuseUtils.EventEmitter {
 
     logout = () => {
         this.setSession(null);
+        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+        this.props.history.push({
+            pathname
+        });
     };
 
     isAuthTokenValid = access_token => {
