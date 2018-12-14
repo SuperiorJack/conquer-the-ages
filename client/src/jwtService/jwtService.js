@@ -15,6 +15,7 @@ class jwtService extends FuseUtils.EventEmitter {
         }, err => {
             return new Promise((resolve, reject) => {
                 if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
+                    console.log('error JWTSERVICES', err)
                     // if you ever get an unauthorized response, logout the user
                     this.emit('onAutoLogout', 'Invalid access_token');
                     this.setSession(null);
@@ -53,46 +54,45 @@ class jwtService extends FuseUtils.EventEmitter {
     createUser = (data) => {
         console.log(data)
         return new Promise((resolve, reject) => {
-            axios.post('/signup', { user: { username: data.displayName, password: data.password, email: data.email } })
+            axios.post('user/signup', { user: { username: data.displayName, password: data.password, email: data.email } })
                 .then(response => {
                     console.log("signup", response);
                     if (response.data) {
-                        const tokenSansBearer = response.headers.authorization.replace("Bearer ", "")
-                        this.setSession(tokenSansBearer);
+                        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+                        this.props.history.push({
+                            pathname
+                        });
+                        resolve(response.data);
                     }
                     else {
                         reject(response);
                     }
-                    const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
-                    this.props.history.push({
-                        pathname
-                    });
                 });
         });
     };
 
     signInWithEmailAndPassword = (email, password) => {
         return new Promise((resolve, reject) => {
-            axios.post('/login', { user: { password: password, email: email } }
+            axios.post('user/login', { user: { password: password, email: email } }
             ).then(response => {
                 console.log("login", response);
                 if (response.data) {
                     const tokenSansBearer = response.headers.authorization.replace("Bearer ", "")
                     this.setSession(tokenSansBearer);
+                    const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+                    this.props.history.push({
+                        pathname
+                    });
                     resolve(response.data);
                 }
                 else {
                     reject(response);
                 }
-                const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
-                this.props.history.push({
-                    pathname
-                });
             });
         });
     };
 
-   signInWithToken = () => {
+    signInWithToken = () => {
         return new Promise((resolve, reject) => {
             axios.get('/api/messages')
                 .then(response => {
@@ -110,12 +110,12 @@ class jwtService extends FuseUtils.EventEmitter {
                 });
         });
     };
-/* 
-    updateUserData = (user) => {
-        return axios.post('/api/auth/user/update', {
-            user: user
-        });
-    };*/
+    /* 
+        updateUserData = (user) => {
+            return axios.post('/api/auth/user/update', {
+                user: user
+            });
+        };*/
 
     setSession = access_token => {
         if (access_token) {
