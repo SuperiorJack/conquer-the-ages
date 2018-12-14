@@ -140,6 +140,14 @@ self.__precacheManifest = [
     "url": "/static/media/muli-latin-300.812c1a52.woff"
   },
   {
+    "revision": "351cf102533282a857656415ded19e6e",
+    "url": "/static/media/muli-latin-300italic.351cf102.woff2"
+  },
+  {
+    "revision": "fe0f275136e0a53984c3bdb64edd6076",
+    "url": "/static/media/muli-latin-300italic.fe0f2751.woff"
+  },
+  {
     "revision": "45e555f9d7a99c5b06bf70196c20abbe",
     "url": "/static/media/muli-latin-400.45e555f9.woff2"
   },
@@ -148,20 +156,12 @@ self.__precacheManifest = [
     "url": "/static/media/muli-latin-400.e40161a9.woff"
   },
   {
-    "revision": "351cf102533282a857656415ded19e6e",
-    "url": "/static/media/muli-latin-300italic.351cf102.woff2"
-  },
-  {
     "revision": "14dce6af9d49c83b9c67001b58fdeb0e",
     "url": "/static/media/muli-latin-400italic.14dce6af.woff2"
   },
   {
     "revision": "10a04c820381c42df50193e3163d4f9d",
     "url": "/static/media/muli-latin-400italic.10a04c82.woff"
-  },
-  {
-    "revision": "fe0f275136e0a53984c3bdb64edd6076",
-    "url": "/static/media/muli-latin-300italic.fe0f2751.woff"
   },
   {
     "revision": "b6e5b86d74352699fff02e4bdc5185e5",
@@ -188,16 +188,16 @@ self.__precacheManifest = [
     "url": "/static/media/muli-latin-700.1e6aab14.woff"
   },
   {
-    "revision": "4ecc03e82b230e336e59b529decc537d",
-    "url": "/static/media/muli-latin-800.4ecc03e8.woff2"
-  },
-  {
     "revision": "33dd03b37af876c59e39bc5d1e24ddf3",
     "url": "/static/media/muli-latin-700italic.33dd03b3.woff2"
   },
   {
     "revision": "280e317f3b13f6fb0b1499343cfb7f40",
     "url": "/static/media/muli-latin-700italic.280e317f.woff"
+  },
+  {
+    "revision": "4ecc03e82b230e336e59b529decc537d",
+    "url": "/static/media/muli-latin-800.4ecc03e8.woff2"
   },
   {
     "revision": "7019eda5ae48543436f9ddc39af4e648",
@@ -208,12 +208,12 @@ self.__precacheManifest = [
     "url": "/static/media/muli-latin-800italic.48826d71.woff2"
   },
   {
-    "revision": "7f69621e9f4f5b5c7b6ea88b99cd2fcc",
-    "url": "/static/media/muli-latin-900.7f69621e.woff2"
-  },
-  {
     "revision": "75f0022540a0a84f3bfeb37f1d8735e3",
     "url": "/static/media/muli-latin-800italic.75f00225.woff"
+  },
+  {
+    "revision": "7f69621e9f4f5b5c7b6ea88b99cd2fcc",
+    "url": "/static/media/muli-latin-900.7f69621e.woff2"
   },
   {
     "revision": "3f016a1fd0a668cfb421ddafb044ba30",
