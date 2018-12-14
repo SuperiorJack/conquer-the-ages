@@ -120,12 +120,12 @@ self.__precacheManifest = [
     "url": "/static/js/main.b7efb257.chunk.js"
   },
   {
-    "revision": "eb2edd0dc666070fc7b90d79c890d8eb",
-    "url": "/static/media/muli-latin-200italic.eb2edd0d.woff2"
-  },
-  {
     "revision": "3ae45760f8b0b342216bd55f131a68ec",
     "url": "/static/media/muli-latin-200.3ae45760.woff"
+  },
+  {
+    "revision": "eb2edd0dc666070fc7b90d79c890d8eb",
+    "url": "/static/media/muli-latin-200italic.eb2edd0d.woff2"
   },
   {
     "revision": "178072369c57c2d0a71adaea74e543f1",
@@ -156,12 +156,12 @@ self.__precacheManifest = [
     "url": "/static/media/muli-latin-400.e40161a9.woff"
   },
   {
-    "revision": "14dce6af9d49c83b9c67001b58fdeb0e",
-    "url": "/static/media/muli-latin-400italic.14dce6af.woff2"
-  },
-  {
     "revision": "10a04c820381c42df50193e3163d4f9d",
     "url": "/static/media/muli-latin-400italic.10a04c82.woff"
+  },
+  {
+    "revision": "14dce6af9d49c83b9c67001b58fdeb0e",
+    "url": "/static/media/muli-latin-400italic.14dce6af.woff2"
   },
   {
     "revision": "b6e5b86d74352699fff02e4bdc5185e5",
@@ -216,12 +216,12 @@ self.__precacheManifest = [
     "url": "/static/media/muli-latin-900.7f69621e.woff2"
   },
   {
-    "revision": "3f016a1fd0a668cfb421ddafb044ba30",
-    "url": "/static/media/muli-latin-900.3f016a1f.woff"
-  },
-  {
     "revision": "f1189aead3bed133b2999d963aa4273f",
     "url": "/static/media/muli-latin-900italic.f1189aea.woff"
+  },
+  {
+    "revision": "3f016a1fd0a668cfb421ddafb044ba30",
+    "url": "/static/media/muli-latin-900.3f016a1f.woff"
   },
   {
     "revision": "7003f1af39a2b5d390a7",
