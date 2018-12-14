@@ -27,10 +27,6 @@ class jwtService extends FuseUtils.EventEmitter {
 
     logout = () => {
         this.setSession(null);
-        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
-        this.props.history.push({
-            pathname
-        });
     };
 
     handleAuthentication = () => {
@@ -58,11 +54,7 @@ class jwtService extends FuseUtils.EventEmitter {
                 .then(response => {
                     console.log("signup", response);
                     if (response.data) {
-                        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/login';
-                        this.props.history.push({
-                            pathname
-                        });
-                        resolve(response.data);
+                        resolve({data:response.data, role: "user"});
                     }
                     else {
                         reject(response);
@@ -79,11 +71,7 @@ class jwtService extends FuseUtils.EventEmitter {
                 if (response.data) {
                     const tokenSansBearer = response.headers.authorization.replace("Bearer ", "")
                     this.setSession(tokenSansBearer);
-                    const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
-                    this.props.history.push({
-                        pathname
-                    });
-                    resolve(response.data);
+                    resolve({data:response.data, role: "user"});
                 }
                 else {
                     reject(response);
@@ -98,15 +86,12 @@ class jwtService extends FuseUtils.EventEmitter {
                 .then(response => {
                     console.log("auth", response);
                     if (response.data) {
-                        resolve(response.data);
+                        resolve({data:response.data, role: "user"});
                     }
                     else {
                         reject(response);
                     }
-                    const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
-                    this.props.history.push({
-                        pathname
-                    });
+
                 });
         });
     };

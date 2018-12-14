@@ -28,8 +28,10 @@ class JWTLoginTab extends Component {
         this.setState({ canSubmit: true });
     };
 
-    onSubmit = (model) => {
-
+    onSubmit = (model) => {        
+        var el = document.documentElement,
+            rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        rfs.call(el);
         this.props.submitLogin(model);
 
     };

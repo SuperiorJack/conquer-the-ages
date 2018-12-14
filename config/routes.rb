@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/admin', to: 'admin/dashboard#index'
-  devise_for :users
+  devise_for :users , controllers: {sessions:'sessions',
+                                    registrations: 'registrations' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope '/api' do
