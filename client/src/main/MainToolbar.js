@@ -30,11 +30,6 @@ class MainToolbar extends Component {
     state = {
         userMenu: null
     };
-    componentDidUpdate(prevProps, prevState) {
-        var el = document.documentElement,
-            rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-        rfs.call(el);
-    }
 
     userMenuClick = event => {
         this.setState({ userMenu: event.currentTarget });
@@ -71,23 +66,7 @@ class MainToolbar extends Component {
                         paper: "py-8"
                     }}
                 >
-                    {user.role === 'guest' ? (
-                        <React.Fragment>
-                            <MenuItem component={Link} to="/login">
-                                <ListItemIcon>
-                                    <Icon>lock</Icon>
-                                </ListItemIcon>
-                                <ListItemText className="pl-0" primary="Login" />
-                            </MenuItem>
-                            <MenuItem component={Link} to="/register">
-                                <ListItemIcon>
-                                    <Icon>person_add</Icon>
-                                </ListItemIcon>
-                                <ListItemText className="pl-0" primary="Register" />
-                            </MenuItem>
-                        </React.Fragment>
-                    ) : (
-                            <React.Fragment>
+
                                 <MenuItem component={Link} to="/pages/profile" onClick={this.userMenuClose}>
                                     <ListItemIcon>
                                         <Icon>account_circle</Icon>
@@ -111,8 +90,6 @@ class MainToolbar extends Component {
                                     </ListItemIcon>
                                     <ListItemText className="pl-0" primary="Logout" />
                                 </MenuItem>
-                            </React.Fragment>
-                        )}
                 </Popover>
                 <MenuItem>
                     <IconButton color="inherit">
@@ -132,21 +109,21 @@ class MainToolbar extends Component {
                 </MenuItem>
                 <FuseAnimate delay={300}>
                     <Button className="h-64" onClick={this.userMenuClick}>
-                        {user.data.photoURL ?
+                        {user.data.photo_url ?
                             (
-                                <Avatar className="" alt="user photo" src={user.data.photoURL} />
+                                <Avatar className="" alt="user photo" src={user.data.photo_url} />
                             )
                             :
                             (
                                 <Avatar className="">
-                                    {user.data.displayName[0]}
+                                    {user.data.username}
                                 </Avatar>
                             )
                         }
 
                         <div className="hidden md:flex flex-col ml-12 items-start">
                             <Typography component="span" className="normal-case font-600 flex">
-                                {user.data.displayName}
+                                {user.data.username}
                             </Typography>
                             <Typography className="text-11 capitalize" color="textSecondary">
                                 {user.role}
