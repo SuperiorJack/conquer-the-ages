@@ -17,7 +17,7 @@ class jwtService extends FuseUtils.EventEmitter {
                 if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
                     console.log('error JWTSERVICES', err.response)
                     // if you ever get an unauthorized response, logout the user
-                    this.emit('onAutoLogout', 'Invalid access_token');
+                    this.emit('onAutoLogout', err.response.data);
                     this.setSession(null);
                 }
                 throw err;
@@ -58,7 +58,7 @@ class jwtService extends FuseUtils.EventEmitter {
                 .then(response => {
                     console.log("signup", response);
                     if (response.data) {
-                        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/';
+                        const pathname = this.props.location.state && this.props.location.state.redirectUrl ? this.props.location.state.redirectUrl : '/login';
                         this.props.history.push({
                             pathname
                         });

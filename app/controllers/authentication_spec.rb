@@ -1,6 +1,6 @@
-RSpec.describe 'POST /login', type: :request do
+RSpec.describe 'POST /users/sign_in', type: :request do
   let(:user) { Fabricate(:user) }
-  let(:url) { '/login' }
+  let(:url) { '/users/sign_in' }
   let(:params) do
     {
       user: {
@@ -38,8 +38,8 @@ RSpec.describe 'POST /login', type: :request do
   end
 end
 
-RSpec.describe 'DELETE /logout', type: :request do
-  let(:url) { '/logout' }
+RSpec.describe 'DELETE /users/sign_out', type: :request do
+  let(:url) { '/users/sign_out' }
 
   it 'returns 204, no content' do
     delete url

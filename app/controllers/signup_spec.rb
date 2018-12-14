@@ -1,5 +1,5 @@
-RSpec.describe 'POST /signup', type: :request do
-  let(:url) { '/signup' }
+RSpec.describe 'POST /users', type: :request do
+  let(:url) { '/users' }
   let(:params) do
     {
       user: {
@@ -14,6 +14,10 @@ RSpec.describe 'POST /signup', type: :request do
 
     it 'returns 200' do
       expect(response.status).to eq 200
+    end
+
+    it 'returns JTW token in authorization header' do
+      expect(response.headers['Authorization']).to be_present
     end
 
     it 'returns a new user' do
