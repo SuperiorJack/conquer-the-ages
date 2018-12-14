@@ -15,7 +15,7 @@ class jwtService extends FuseUtils.EventEmitter {
         }, err => {
             return new Promise((resolve, reject) => {
                 if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
-                    console.log('error JWTSERVICES', err)
+                    console.log('error JWTSERVICES', err.response)
                     // if you ever get an unauthorized response, logout the user
                     this.emit('onAutoLogout', 'Invalid access_token');
                     this.setSession(null);
@@ -54,7 +54,7 @@ class jwtService extends FuseUtils.EventEmitter {
     createUser = (data) => {
         console.log(data)
         return new Promise((resolve, reject) => {
-            axios.post('users/sign_up', { user: { username: data.displayName, password: data.password, email: data.email } })
+            axios.post('users', { user: { username: data.displayName, password: data.password, email: data.email } })
                 .then(response => {
                     console.log("signup", response);
                     if (response.data) {
