@@ -1,3 +1,5 @@
+import { authRoles } from 'auth';
+
 export const fuseNavigationConfig = [
     {
         'id': 'conquer-the-ages',
