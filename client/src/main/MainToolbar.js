@@ -75,35 +75,27 @@ class MainToolbar extends Component {
                         paper: "py-8"
                     }}
                 >
-                    <List className={classes.root}>
-                        <MenuItem onClick={this.menuClose}>
-                            <ListItem>
-                                <Avatar>
-                                    <ImageIcon />
-                                </Avatar>
-                                <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-                            </ListItem>
-                        </MenuItem>
-
+                    <List className={classes.root} onClick={this.menuClose}>
+                        <ListItem>
+                            <Avatar>
+                                <ImageIcon />
+                            </Avatar>
+                            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+                        </ListItem>
                         <Divider variant="inset" component="li" />
-
-                        <MenuItem onClick={this.menuClose}>
-                            <ListItem>
-                                <Avatar>
-                                    <WorkIcon />
-                                </Avatar>
-                                <ListItemText primary="Work" secondary="Jan 7, 2014" />
-                            </ListItem>
-                        </MenuItem>
+                        <ListItem>
+                            <Avatar>
+                                <WorkIcon />
+                            </Avatar>
+                            <ListItemText primary="Work" secondary="Jan 7, 2014" />
+                        </ListItem>
                         <Divider variant="inset" component="li" />
-                        <MenuItem onClick={this.menuClose}>
-                            <ListItem>
-                                <Avatar>
-                                    <BeachAccessIcon />
-                                </Avatar>
-                                <ListItemText primary="Vacation" secondary="July 20, 2014" />
-                            </ListItem>
-                        </MenuItem>
+                        <ListItem>
+                            <Avatar>
+                                <BeachAccessIcon />
+                            </Avatar>
+                            <ListItemText primary="Vacation" secondary="July 20, 2014" />
+                        </ListItem>
                     </List>
                 </Popover>
                 <Popover
@@ -140,8 +132,8 @@ class MainToolbar extends Component {
                         <ListItemText className="pl-0" primary="Logout" />
                     </MenuItem>
                 </Popover>
-                <MenuItem>
-                    <IconButton color="inherit" onClick={this.notificationMenuClick}>
+                <MenuItem onClick={this.notificationMenuClick}>
+                    <IconButton color="inherit" >
                         <Badge badgeContent={11} color="secondary">
                             <NotificationsIcon />
                         </Badge>
