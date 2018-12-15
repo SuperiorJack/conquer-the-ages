@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles/index';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ImageIcon from '@material-ui/icons/Image';
+import WorkIcon from '@material-ui/icons/Work';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import classNames from 'classnames';
 import { Avatar, Button, Icon, IconButton, ListItemIcon, ListItemText, Popover, MenuItem, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -8,6 +14,7 @@ import * as chatPanelActions from 'main/chatPanel/store/actions';
 import { bindActionCreators } from 'redux';
 import { FuseAnimate } from '@fuse';
 import { Link } from 'react-router-dom';
+
 
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -32,7 +39,10 @@ class MainToolbar extends Component {
     };
 
     userMenuClick = event => {
-        this.setState({ userMenu: event.currentTarget });
+        this.setState({ ...this.state, userMenu: event.currentTarget });
+    };
+    notificationMenuClick = event => {
+        this.setState({ ...this.state, notificationMenu: event.currentTarget });
     };
 
     menuClose = () => {
@@ -99,7 +109,7 @@ class MainToolbar extends Component {
                 <Popover
                     open={Boolean(userMenu)}
                     anchorEl={userMenu}
-                    onClose={this.userMenuClose}
+                    onClose={this.menuClose}
                     anchorOrigin={{
                         vertical: 'bottom',
                         horizontal: 'center'
@@ -112,7 +122,7 @@ class MainToolbar extends Component {
                         paper: "py-8"
                     }}
                 >
-                    <MenuItem component={Link} to="/profile" onClick={this.userMenuClose}>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
                         <ListItemIcon>
                             <Icon>account_circle</Icon>
                         </ListItemIcon>
@@ -121,7 +131,7 @@ class MainToolbar extends Component {
                     <MenuItem
                         onClick={() => {
                             logout();
-                            this.userMenuClose();
+                            this.menuClose();
                         }}
                     >
                         <ListItemIcon>
@@ -131,7 +141,7 @@ class MainToolbar extends Component {
                     </MenuItem>
                 </Popover>
                 <MenuItem>
-                    <IconButton color="inherit">
+                    <IconButton color="inherit" onClick={this.notificationMenuClick}>
                         <Badge badgeContent={11} color="secondary">
                             <NotificationsIcon />
                         </Badge>
