@@ -1,18 +1,25 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { FuseUtils } from '@fuse/index';
-import { ExampleConfig } from 'main/content/example/ExampleConfig';
-import { LoginConfig } from 'main/content/login/LoginConfig';
-import { RegisterConfig } from 'main/content/register/RegisterConfig';
-import { LogoutConfig } from 'main/content/logout/LogoutConfig';
-import { pagesConfigs } from 'main/content/pages/pagesConfigs';
+import { ExampleConfig } from 'main/example/ExampleConfig';
+import { LoginConfig } from 'main/login/LoginConfig';
+import { RegisterConfig } from 'main/register/RegisterConfig';
+import { LogoutConfig } from 'main/logout/LogoutConfig';
+import { ProfilePageConfig } from 'main/profile/ProfilePageConfig';
+import { ChatAppConfig } from 'main/chat/ChatAppConfig';
+import { Error404PageConfig } from 'main/errors/404/Error404PageConfig';
+import { Error500PageConfig } from 'main/errors/500/Error500PageConfig';
 
 const routeConfigs = [
-    ...pagesConfigs,
+    ProfilePageConfig,
     LoginConfig,
     RegisterConfig,
     LogoutConfig,
-    ExampleConfig
+    ExampleConfig,
+    ChatAppConfig,
+    Error404PageConfig,
+    Error500PageConfig,
+
 ];
 
 export const routes = [

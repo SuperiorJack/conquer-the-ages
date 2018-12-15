@@ -1,4 +1,5 @@
-import {FuseLoadable} from '@fuse';
+import { FuseLoadable } from '@fuse';
+import { authRoles } from 'auth';
 
 export const ChatAppConfig = {
     settings: {
@@ -6,9 +7,10 @@ export const ChatAppConfig = {
             config: {}
         }
     },
-    routes  : [
+    auth: authRoles.user,
+    routes: [
         {
-            path     : '/apps/chat',
+            path: '/apps/chat',
             component: FuseLoadable({
                 loader: () => import('./ChatApp')
             })

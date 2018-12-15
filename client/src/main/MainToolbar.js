@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import MailIcon from '@material-ui/icons/Mail';
 
 const styles = theme => ({
     root: {
@@ -67,38 +66,30 @@ class MainToolbar extends Component {
                     }}
                 >
 
-                                <MenuItem component={Link} to="/pages/profile" onClick={this.userMenuClose}>
-                                    <ListItemIcon>
-                                        <Icon>account_circle</Icon>
-                                    </ListItemIcon>
-                                    <ListItemText className="pl-0" primary="My Profile" />
-                                </MenuItem>
-                                <MenuItem component={Link} to="/apps/mail" onClick={this.userMenuClose}>
-                                    <ListItemIcon>
-                                        <Icon>mail</Icon>
-                                    </ListItemIcon>
-                                    <ListItemText className="pl-0" primary="Inbox" />
-                                </MenuItem>
-                                <MenuItem
-                                    onClick={() => {
-                                        logout();
-                                        this.userMenuClose();
-                                    }}
-                                >
-                                    <ListItemIcon>
-                                        <Icon>exit_to_app</Icon>
-                                    </ListItemIcon>
-                                    <ListItemText className="pl-0" primary="Logout" />
-                                </MenuItem>
+                    <MenuItem component={Link} to="/pages/profile" onClick={this.userMenuClose}>
+                        <ListItemIcon>
+                            <Icon>account_circle</Icon>
+                        </ListItemIcon>
+                        <ListItemText className="pl-0" primary="My Profile" />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/apps/mail" onClick={this.userMenuClose}>
+                        <ListItemIcon>
+                            <Icon>mail</Icon>
+                        </ListItemIcon>
+                        <ListItemText className="pl-0" primary="Inbox" />
+                    </MenuItem>
+                    <MenuItem
+                        onClick={() => {
+                            logout();
+                            this.userMenuClose();
+                        }}
+                    >
+                        <ListItemIcon>
+                            <Icon>exit_to_app</Icon>
+                        </ListItemIcon>
+                        <ListItemText className="pl-0" primary="Logout" />
+                    </MenuItem>
                 </Popover>
-                <MenuItem>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <MailIcon />
-                        </Badge>
-                    </IconButton>
-                    <p>Messages</p>
-                </MenuItem>
                 <MenuItem>
                     <IconButton color="inherit">
                         <Badge badgeContent={11} color="secondary">

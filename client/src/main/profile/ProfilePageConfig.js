@@ -1,4 +1,5 @@
-import {FuseLoadable} from '@fuse';
+import { FuseLoadable } from '@fuse';
+import { authRoles } from 'auth';
 
 export const ProfilePageConfig = {
     settings: {
@@ -6,9 +7,10 @@ export const ProfilePageConfig = {
             config: {}
         }
     },
-    routes  : [
+    auth: authRoles.user,
+    routes: [
         {
-            path     : '/pages/profile',
+            path: '/pages/profile',
             component: FuseLoadable({
                 loader: () => import('./ProfilePage')
             })
