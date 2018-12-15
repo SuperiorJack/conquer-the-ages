@@ -10,6 +10,7 @@ class MessagesController < ApiController
 
   # GET /messages/1
   def show
+    #render json: current_user
     render json: @message
   end
 
