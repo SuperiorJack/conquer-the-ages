@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles/index';
-import ListItem from '@material-ui/core/ListItem';
 import StarIcon from '@material-ui/icons/Star';
 import ClearIcon from '@material-ui/icons/Clear';
 import classNames from 'classnames';
