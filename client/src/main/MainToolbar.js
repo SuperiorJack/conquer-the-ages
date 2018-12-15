@@ -66,7 +66,7 @@ class MainToolbar extends Component {
                     }}
                 >
 
-                    <MenuItem component={Link} to="/pages/profile" onClick={this.userMenuClose}>
+                    <MenuItem component={Link} to="/profile" onClick={this.userMenuClose}>
                         <ListItemIcon>
                             <Icon>account_circle</Icon>
                         </ListItemIcon>

@@ -10,7 +10,7 @@ export const ExampleConfig = {
     auth: authRoles.user,
     routes: [
         {
-            path: '/',
+            path: '/example',
             component: Example
         }
     ]
