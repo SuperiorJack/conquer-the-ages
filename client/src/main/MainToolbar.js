@@ -27,19 +27,21 @@ const styles = theme => ({
 
 class MainToolbar extends Component {
     state = {
-        userMenu: null
+        userMenu: null,
+        notificationMenu: null
     };
 
     userMenuClick = event => {
         this.setState({ userMenu: event.currentTarget });
     };
 
-    userMenuClose = () => {
-        this.setState({ userMenu: null });
+    menuClose = () => {
+        this.setState({ userMenu: null, notificationMenu: null });
     };
     render() {
         const { classes, user, logout } = this.props;
         const { userMenu } = this.state;
+        const { notificationMenu } = this.state;
 
         return (
             <div className={classNames(classes.root, "flex flex-row")}>
@@ -47,8 +49,53 @@ class MainToolbar extends Component {
                 <div className="flex flex-1 px-24">
                     <Typography>Ressources</Typography>
                 </div>
+                <Popover
+                    open={Boolean(notificationMenu)}
+                    anchorEl={notificationMenu}
+                    onClose={this.menuClose}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center'
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center'
+                    }}
+                    classes={{
+                        paper: "py-8"
+                    }}
+                >
+                    <List className={classes.root}>
+                        <MenuItem onClick={this.menuClose}>
+                            <ListItem>
+                                <Avatar>
+                                    <ImageIcon />
+                                </Avatar>
+                                <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+                            </ListItem>
+                        </MenuItem>
 
+                        <Divider variant="inset" component="li" />
 
+                        <MenuItem onClick={this.menuClose}>
+                            <ListItem>
+                                <Avatar>
+                                    <WorkIcon />
+                                </Avatar>
+                                <ListItemText primary="Work" secondary="Jan 7, 2014" />
+                            </ListItem>
+                        </MenuItem>
+                        <Divider variant="inset" component="li" />
+                        <MenuItem onClick={this.menuClose}>
+                            <ListItem>
+                                <Avatar>
+                                    <BeachAccessIcon />
+                                </Avatar>
+                                <ListItemText primary="Vacation" secondary="July 20, 2014" />
+                            </ListItem>
+                        </MenuItem>
+                    </List>
+                </Popover>
                 <Popover
                     open={Boolean(userMenu)}
                     anchorEl={userMenu}
@@ -65,7 +112,6 @@ class MainToolbar extends Component {
                         paper: "py-8"
                     }}
                 >
-
                     <MenuItem component={Link} to="/profile" onClick={this.userMenuClose}>
                         <ListItemIcon>
                             <Icon>account_circle</Icon>
@@ -115,7 +161,7 @@ class MainToolbar extends Component {
                         <Icon className="text-16 ml-12 hidden sm:flex" variant="action">keyboard_arrow_down</Icon>
                     </Button>
                 </FuseAnimate>
-            </div>
+            </div >
         );
     }
 }
