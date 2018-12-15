@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles/index';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import StarIcon from '@material-ui/icons/Star';
+import ClearIcon from '@material-ui/icons/Clear';
 import classNames from 'classnames';
 import { Avatar, Button, Icon, IconButton, ListItemIcon, ListItemText, Popover, MenuItem, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -25,10 +22,9 @@ const styles = theme => ({
         alignItems: 'center',
         width: '100%'
     },
-    seperator: {
-        width: 1,
-        height: 64,
-        backgroundColor: theme.palette.divider
+    popoverOverflow: {
+        overflow: 'auto',
+        maxHeight: 400
     }
 });
 
@@ -60,6 +56,7 @@ class MainToolbar extends Component {
                     <Typography>Ressources</Typography>
                 </div>
                 <Popover
+                    className={classes.popoverOverflow}
                     open={Boolean(notificationMenu)}
                     anchorEl={notificationMenu}
                     onClose={this.menuClose}
@@ -75,28 +72,69 @@ class MainToolbar extends Component {
                         paper: "py-8"
                     }}
                 >
-                    <List className={classes.root} onClick={this.menuClose}>
-                        <ListItem>
-                            <Avatar>
-                                <ImageIcon />
-                            </Avatar>
-                            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                        <ListItem>
-                            <Avatar>
-                                <WorkIcon />
-                            </Avatar>
-                            <ListItemText primary="Work" secondary="Jan 7, 2014" />
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                        <ListItem>
-                            <Avatar>
-                                <BeachAccessIcon />
-                            </Avatar>
-                            <ListItemText primary="Vacation" secondary="July 20, 2014" />
-                        </ListItem>
-                    </List>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Chelsea Otakan" />
+                        <ClearIcon />
+                    </MenuItem>
+                    <MenuItem component={Link} to="/profile" onClick={this.menuClose}>
+                        <ListItemIcon>
+                            <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Eric Hoffman" />
+                        <ClearIcon />
+                    </MenuItem>
                 </Popover>
                 <Popover
                     open={Boolean(userMenu)}

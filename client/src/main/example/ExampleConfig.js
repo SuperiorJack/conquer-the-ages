@@ -7,7 +7,7 @@ export const ExampleConfig = {
             config: {}
         }
     },
-    auth: authRoles.user,
+    //auth: authRoles.user,
     routes: [
         {
             path: '/example',
