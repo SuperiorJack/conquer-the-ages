@@ -21,7 +21,7 @@ const styles = theme => ({
         width: 72,
         height: 72,
         position: 'absolute',
-        top: 92,
+        top: 60,
         padding: 8,
         background: theme.palette.background.default,
         boxSizing: 'content-box',

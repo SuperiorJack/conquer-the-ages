@@ -1,9 +1,7 @@
-require 'gravtastic'
+require 'digest/md5'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  include Gravtastic
-  gravtastic
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: Blacklist
@@ -14,6 +12,6 @@ class User < ApplicationRecord
   after_initialize :set_default
 
   def set_default
-    self.photo_url ||= gravatar_url(self.email, 40)
+    self.photo_url ||= "https://www.gravatar.com/avatar/"+Digest::MD5.hexdigest(self.username)+"?d=identicon&s=40"
   end
 end

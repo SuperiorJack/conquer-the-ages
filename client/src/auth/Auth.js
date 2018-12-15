@@ -15,64 +15,14 @@ class Auth extends Component {
     jwtCheck = () => {
         jwtService.on('onAutoLogin', () => {
 
-            this.props.showMessage({ message: 'Logging in with JWT' });
+            this.props.showMessage({ message: 'Logging in' });
 
             /**
              * Sign in and retrieve user data from Api
              */
             jwtService.signInWithToken()
                 .then(user => {
-                    this.props.setUserData(
-                        {
-                            uuid: 'XgbuVEXBU5gtSKdbQRP1Zbbby1i1',
-                            from: 'custom-db',
-                            password: "admin",
-                            role: "admin",
-                            data: {
-                                'displayName': 'Abbott Keitch',
-                                'photoURL': 'assets/images/avatars/Abbott.jpg',
-                                'email': 'admin',
-                                settings: {
-                                    layout: {
-                                        style: 'layout1',
-                                        config: {
-                                            scroll: 'content',
-                                            navbar: {
-                                                display: true,
-                                                folded: true,
-                                                position: 'left'
-                                            },
-                                            toolbar: {
-                                                display: true,
-                                                style: 'fixed',
-                                                position: 'below'
-                                            },
-                                            footer: {
-                                                display: true,
-                                                style: 'fixed',
-                                                position: 'below'
-                                            },
-                                            mode: 'fullwidth'
-                                        }
-                                    },
-                                    customScrollbars: true,
-                                    theme: {
-                                        main: 'defaultDark',
-                                        navbar: 'defaultDark',
-                                        toolbar: 'defaultDark',
-                                        footer: 'defaultDark'
-                                    }
-                                },
-                                shortcuts: [
-                                    'calendar',
-                                    'mail',
-                                    'contacts'
-                                ]
-                            }
-                        }
-
-                    );
-
+                    this.props.setUserData(user);
                     this.props.showMessage({ message: 'You logged in!' });
                 })
                 .catch(error => {

@@ -1,13 +1,8 @@
 class UsersController < ApiController
 
   def index
-    @users = User.all
+    @user = User.find(current_user.id)
 
-    render json: @users
-  end
-
-  def show
-    @user = User.find(params[:id])
     render json: @user
   end
   
