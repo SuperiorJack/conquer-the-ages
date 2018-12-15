@@ -10,7 +10,7 @@ export const ProfilePageConfig = {
     auth: authRoles.user,
     routes: [
         {
-            path: '/pages/profile',
+            path: '/profile',
             component: FuseLoadable({
                 loader: () => import('./ProfilePage')
             })

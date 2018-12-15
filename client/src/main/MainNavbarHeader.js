@@ -22,10 +22,6 @@ const styles = theme => ({
             duration: theme.transitions.duration.shortest,
             easing: theme.transitions.easing.easeInOut
         })
-    },
-    reactBadge: {
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        color: '#61dafb'
     }
 });
 
@@ -33,6 +29,7 @@ function MainNavbarHeader({ classes }) {
     return (
         <div className={classes.root}>
             <div className={classNames(classes.logo, "flex items-center")}>
+                <img className={classNames(classes.logoIcon, "logo-icon")} src="assets/img/empty.png" alt="logo" />
             </div>
         </div>
     );

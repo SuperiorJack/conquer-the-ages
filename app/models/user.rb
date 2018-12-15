@@ -14,6 +14,6 @@ class User < ApplicationRecord
   after_initialize :set_default
 
   def set_default
-    self.photo_url ||= gravatar_url
+    self.photo_url ||= gravatar_url(self.email, 40)
   end
 end

@@ -52,9 +52,7 @@ ReactDOM.render(
                                     <MainFooter />
                                 }
                                 rightSidePanel={
-                                    <React.Fragment>
-                                        <ChatPanel />
-                                    </React.Fragment>
+                                    <ChatPanel />
                                 }
                             >
                             </FuseLayout>

@@ -116,9 +116,6 @@ class MainToolbar extends Component {
                             <Typography component="span" className="normal-case font-600 flex">
                                 {user.data.username}
                             </Typography>
-                            <Typography className="text-11 capitalize" color="textSecondary">
-                                {user.role}
-                            </Typography>
                         </div>
 
                         <Icon className="text-16 ml-12 hidden sm:flex" variant="action">keyboard_arrow_down</Icon>

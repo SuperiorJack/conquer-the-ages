@@ -10,7 +10,7 @@ export const ChatAppConfig = {
     auth: authRoles.user,
     routes: [
         {
-            path: '/apps/chat',
+            path: '/chat',
             component: FuseLoadable({
                 loader: () => import('./ChatApp')
             })
