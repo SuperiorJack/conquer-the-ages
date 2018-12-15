@@ -72,12 +72,6 @@ class MainToolbar extends Component {
                         </ListItemIcon>
                         <ListItemText className="pl-0" primary="My Profile" />
                     </MenuItem>
-                    <MenuItem component={Link} to="/apps/mail" onClick={this.userMenuClose}>
-                        <ListItemIcon>
-                            <Icon>mail</Icon>
-                        </ListItemIcon>
-                        <ListItemText className="pl-0" primary="Inbox" />
-                    </MenuItem>
                     <MenuItem
                         onClick={() => {
                             logout();
