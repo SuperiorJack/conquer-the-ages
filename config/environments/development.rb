@@ -53,4 +53,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ENV["SECRET_KEY_BASE"] = '6446e57f45025c75594ce29694f986280e7e346a45496f6a054bef9a44a5aead451610321549adef16h90d19ccd0bbcec8201dc3542fe3bc92add9f78dc74689'
 end

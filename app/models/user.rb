@@ -12,6 +12,6 @@ class User < ApplicationRecord
   after_initialize :set_default
 
   def set_default
-    self.photo_url ||= "https://www.gravatar.com/avatar/"+Digest::MD5.hexdigest(self.username)+"?d=identicon&s=40"
+    self.photo_url ||= "https://www.gravatar.com/avatar/"+Digest::MD5.hexdigest(self.username)+"?d=identicon&s=72"
   end
 end
