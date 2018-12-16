@@ -7,7 +7,7 @@ export const ProfilePageConfig = {
             config: {}
         }
     },
-    auth: authRoles.user,
+    //auth: authRoles.user,
     routes: [
         {
             path: '/profile',

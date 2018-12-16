@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { FusePageSimple, FuseAnimate } from '@fuse';
-import { Avatar, Button, Tab, Tabs, Typography } from '@material-ui/core';
+import { Avatar, Tab, Tabs, Typography } from '@material-ui/core';
 import TimelineTab from 'main/profile/tabs/TimelineTab';
-import PhotosVideosTab from 'main/profile/tabs/PhotosVideosTab';
 import AboutTab from 'main/profile/tabs/AboutTab';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
     layoutRoot: {},
@@ -42,7 +42,7 @@ class ProfilePage extends Component {
     };
 
     render() {
-        const { classes } = this.props;
+        const { classes, user } = this.props;
         const { value } = this.state;
 
         return (
@@ -56,16 +56,11 @@ class ProfilePage extends Component {
                     <div className="p-24 flex flex-1 flex-col items-center justify-center md:flex-row md:items-end">
                         <div className="flex flex-1 flex-col items-center justify-center md:flex-row md:items-center md:justify-start">
                             <FuseAnimate animation="transition.expandIn" delay={300}>
-                                <Avatar className="w-96 h-96" src="assets/images/avatars/Velazquez.jpg" />
+                                <Avatar className="w-96 h-96" src={user.data.photo_url} />
                             </FuseAnimate>
                             <FuseAnimate animation="transition.slideLeftIn" delay={300}>
-                                <Typography className="md:ml-24" variant="h4" color="inherit">John Doe</Typography>
+                                <Typography className="md:ml-24" variant="h4" color="inherit">{user.data.username}</Typography>
                             </FuseAnimate>
-                        </div>
-
-                        <div className="flex items-center justify-end">
-                            <Button className="mr-8 normal-case" variant="contained" color="secondary" aria-label="Follow">Follow</Button>
-                            <Button className="normal-case" variant="contained" color="primary" aria-label="Send Message">Send Message</Button>
                         </div>
                     </div>
                 }
@@ -85,15 +80,11 @@ class ProfilePage extends Component {
                             classes={{
                                 root: classes.tabRoot
                             }}
-                            label="Timeline" />
+                            label="Profile" />
                         <Tab
                             classes={{
                                 root: classes.tabRoot
-                            }} label="About" />
-                        <Tab
-                            classes={{
-                                root: classes.tabRoot
-                            }} label="Photos & Videos" />
+                            }} label="Settings" />
                     </Tabs>
                 }
                 content={
@@ -105,9 +96,6 @@ class ProfilePage extends Component {
                         {value === 1 && (
                             <AboutTab />
                         )}
-                        {value === 2 && (
-                            <PhotosVideosTab />
-                        )}
                     </div>
                 }
             />
@@ -115,4 +103,10 @@ class ProfilePage extends Component {
     };
 }
 
-export default withStyles(styles, { withTheme: true })(ProfilePage);
+function mapStateToProps({ auth }) {
+    return {
+        user: auth.user
+    }
+}
+
+export default withStyles(styles, { withTheme: true })(connect(mapStateToProps)(ProfilePage));
