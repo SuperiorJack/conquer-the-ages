@@ -1,7 +1,7 @@
 import Example from './Example';
 import { authRoles } from 'auth';
 
-export const ExampleConfig = {
+export const RootConfig = {
     settings: {
         layout: {
             config: {}
