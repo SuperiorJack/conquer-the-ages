@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { FuseUtils } from '@fuse/index';
 import { ExampleConfig } from 'main/example/ExampleConfig';
+import { RootConfig } from 'main/example/RootConfig';
 import { LoginConfig } from 'main/login/LoginConfig';
 import { RegisterConfig } from 'main/register/RegisterConfig';
 import { LogoutConfig } from 'main/logout/LogoutConfig';
@@ -19,7 +20,7 @@ const routeConfigs = [
     ChatAppConfig,
     Error404PageConfig,
     Error500PageConfig,
-
+    RootConfig
 ];
 
 export const routes = [
